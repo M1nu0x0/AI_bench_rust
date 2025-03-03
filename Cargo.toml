@@ -1,0 +1,33 @@
+[package]
+name = "AI_bench_rust"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[dev-dependencies]
+# random
+rand = "^0.8.4"
+
+# rust AI library
+burn = { version = "^0.16.0", features = ["ndarray", "wgpu"] }
+
+# ONNX runtime
+onnxruntime = { version = "^0.0.14" }
+
+# # Torch
+# tch = { version = "^0.15.0" }
+
+# TensorFlow
+tensorflow = { version = "^0.21.0", features = ["tensorflow_gpu"] }
+
+# Criterion
+criterion = "0.5"
+
+[features]
+default = ["gpu"]
+gpu = ["burn/wgpu", "tensorflow/tensorflow_gpu"]
+
+[[bench]]
+name = "operators"
+harness = false
